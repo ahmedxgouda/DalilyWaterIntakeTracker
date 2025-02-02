@@ -85,7 +85,7 @@ def add_intake():
     db.session.commit()
     return jsonify({'message': 'Intake added successfully'}), 201
 
-@app.route('/api/water/intake/<int:id>', methods=['PUT'])
+@app.route('/api/water/intake/<int:id>', methods=['PATCH'])
 @jwt_required()
 def update_intake(id):
     user = get_jwt_identity()
@@ -206,7 +206,7 @@ def get_goal():
         return jsonify({'error': 'Goal not set yet'}), 400
     return jsonify({'goal': goal.goal, 'unit': goal.unit}), 200
 
-@app.route('/api/goal', methods=['PUT'])
+@app.route('/api/goal', methods=['PATCH'])
 @jwt_required()
 def update_goal():
     user = get_jwt_identity()
